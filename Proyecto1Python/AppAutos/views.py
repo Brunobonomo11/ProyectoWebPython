@@ -16,6 +16,14 @@ def inicio(request):
     return render(request, "AppAutos/inicio.html")
 
 
+def ver_camionetas(request):
+    
+    return render(request, "AppAutos/camionetas.html")
+
+def ver_camiones(request):
+    
+    return render(request, "AppAutos/camiones.html")
+
 
 
 # Create your views here.
