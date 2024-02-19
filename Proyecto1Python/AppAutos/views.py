@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from AppAutos.models import Autos, Camionetas, Camiones
+from AppAutos.forms import AutosFormulario, CamionetasFormulario, CamionesFormulario
 
 
 def ver_autos(request):
@@ -30,26 +31,100 @@ def ver_camiones(request):
 
 def agregar_auto(request):
     
-    auto1 = Autos(marca="Renault", modelo="Clio Mio", año=2012, color="Gris")
-    auto1.save()
+    #Depende de darle click al botón enviar o guardar
+        
+        nuevo_formulario = AutosFormulario(request.POST)
+        
+        if request.method == "POST":
+        
+            if nuevo_formulario.is_valid():
+                
+                info = nuevo_formulario.cleaned_data
+                
+                auto_nuevo = Autos(marca=info["marca"], modelo=info["modelo"], año=info["año"], color=info["color"]) 
+                
+                auto_nuevo.save()
+                
+                return render(request, "AppAutos/inicio.html")
+            
+        else: #Si la persona no ha hecho click al botón enviar
+            
+            nuevo_formulario = AutosFormulario()
     
-    return HttpResponse("Se agregó un auto nuevo...")
+        return render(request, "AppAutos/formu_auto.html", {"mi_formu":nuevo_formulario})
+
+
 
 
 def agregar_camioneta(request):
     
-    camioneta1 = Camionetas(marca="Ford", modelo="Raptor F-150", año=2022, color="Azul")
-    camioneta1.save()
+    #Depende de darle click al botón enviar o guardar
+        
+        nuevo_formulario = CamionetasFormulario(request.POST)
+        
+        if request.method == "POST":
+        
+            if nuevo_formulario.is_valid():
+                
+                info = nuevo_formulario.cleaned_data
+                
+                camioneta_nueva = Camionetas(marca=info["marca"], modelo=info["modelo"], año=info["año"], color=info["color"]) 
+                
+                camioneta_nueva.save()
+                
+                return render(request, "AppAutos/inicio.html")
+            
+        else: #Si la persona no ha hecho click al botón enviar
+            
+            nuevo_formulario = CamionetasFormulario()
     
-    return HttpResponse("Se agregó una camioneta nueva...")
+        return render(request, "AppAutos/formu_camioneta.html", {"mi_formu":nuevo_formulario})
+
+
 
 
 def agregar_camion(request):
     
-    camion1 = Camiones(marca="Mercedes Benz", modelo="Atego 1725/42", año=2014, color="Blanco")
-    camion1.save()
+    #Depende de darle click al botón enviar o guardar
+        
+        nuevo_formulario = CamionesFormulario(request.POST)
+        
+        if request.method == "POST":
+        
+            if nuevo_formulario.is_valid():
+                
+                info = nuevo_formulario.cleaned_data
+                
+                camion_nuevo = Camiones(marca=info["marca"], modelo=info["modelo"], año=info["año"], color=info["color"]) 
+                
+                camion_nuevo.save()
+                
+                return render(request, "AppAutos/inicio.html")
+            
+        else: #Si la persona no ha hecho click al botón enviar
+            
+            nuevo_formulario = CamionesFormulario()
     
-    return HttpResponse("Se agregó un camion nuevo...")
+        return render(request, "AppAutos/formu_camion.html", {"mi_formu":nuevo_formulario})
+    
+
+def busqueda_auto_año(request):
+    
+    return render(request, "AppAutos/buscar_auto_año.html")
+
+  
+def resultados_buscar_auto_año(request):
+    
+        if request.method=="GET":
+            
+            año_pedido = request.GET["año"]
+            resultados_autos = Autos.objects.filter(año__icontains=año_pedido)
+        
+            return render(request, "AppAutos/buscar_auto_año.html", {"autos":resultados_autos}) 
+
+    
+        else:
+            return render(request, "AppAutos/buscar_auto_año.html")
 
 
 

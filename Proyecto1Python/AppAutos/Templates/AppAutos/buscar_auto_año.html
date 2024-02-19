@@ -1,0 +1,22 @@
+{% extends "AppAutos/padre.html"%}
+
+{% block titulo %}
+
+    <h1>Acá buscamos autos de acuerdo al año:</h1>
+
+    <form action="/resultadosAutos/" method="GET">
+        Ingresa el año del auto: <input type="number" name="año">
+        <input type="submit" value="Buscar">
+    </form>
+
+    {%if autos%}
+
+    {% for x in autos %}
+
+    <p>{{x.marca}}</p>
+
+    {% endfor %}
+
+    {% endif %}
+    
+{% endblock %}
