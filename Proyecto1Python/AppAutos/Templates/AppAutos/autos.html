@@ -1,3 +1,20 @@
 {%  extends "AppAutos/padre.html"%}
 
-{% block titulo %} Acá podes encontrar nuestros autos más destacados {% endblock %}
+{% block titulo %} 
+Acá vas a encontrar los autos más destacados
+{% endblock %}
+ 
+{% block contenido1 %}
+
+<ol>
+
+{% for x in autos %}
+
+<li>Marca: {{x.marca}}  <br> Modelo: {{x.modelo}}  Año: {{x.año}}</li>
+
+{% endfor %}
+
+</ol>
+
+<button class="btn btn-warning"><a href="{% url 'Nuevo Auto' %}">Agregar Nuevo Auto</a></button>
+{% endblock %}

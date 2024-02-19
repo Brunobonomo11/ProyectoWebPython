@@ -4,21 +4,33 @@ from django.db import models
 
 class Autos(models.Model):
     
-            marca = models.CharField(max_length=40)
-            modelo = models.CharField(max_length=40)
-            año =  models.IntegerField()
-            color = models.CharField(max_length=40)
+        def __str__(self):
+            
+            return f"{self.marca} {self.modelo} {self.año} {self.color}"
+    
+        marca = models.CharField(max_length=40)
+        modelo = models.CharField(max_length=40)
+        año =  models.IntegerField()
+        color = models.CharField(max_length=40)
     
 class Camionetas(models.Model):
     
-            marca = models.CharField(max_length=40)
-            modelo = models.CharField(max_length=40)
-            año =  models.IntegerField()
-            color = models.CharField(max_length=40)
+        def __str__(self):
+            
+            return f"{self.marca} {self.modelo} {self.año} {self.color}"
+    
+        marca = models.CharField(max_length=40)
+        modelo = models.CharField(max_length=40)
+        año =  models.IntegerField()
+        color = models.CharField(max_length=40)
             
 class Camiones(models.Model):
     
-            marca = models.CharField(max_length=40)
-            modelo = models.CharField(max_length=40)
-            año =  models.IntegerField()
-            color = models.CharField(max_length=40)
+        def __str__(self):
+            
+            return f"{self.marca} {self.modelo} {self.año} {self.color}"
+    
+        marca = models.CharField(max_length=40)
+        modelo = models.CharField(max_length=40)
+        año =  models.IntegerField()
+        color = models.CharField(max_length=40)

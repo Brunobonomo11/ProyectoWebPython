@@ -1,0 +1,15 @@
+{% extends "AppAutos/padre.html"%}
+
+{% block titulo %}
+
+    <h1>Acá actualizamos una camioneta nuevo</h1>
+
+    <form action="" method="POST"> {% csrf_token %}
+
+        {{mi_formu.as_p}}
+
+        <input type="submit" value="Guardar">
+
+    </form>
+
+{% endblock %}

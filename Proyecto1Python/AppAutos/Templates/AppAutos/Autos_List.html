@@ -1,14 +1,14 @@
 {%  extends "AppAutos/padre.html"%}
 
 {% block titulo %} 
-Acá vas a encontrar los camiones más destacados
+Acá vas a encontrar los autos más destacados
 {% endblock %}
  
 {% block contenido1 %}
 
 <ol>
 
-{% for x in camiones %}
+{% for x in object_list %}
 
 <li>Marca: {{x.marca}}  <br> Modelo: {{x.modelo}}  Año: {{x.año}}</li>
 
@@ -16,5 +16,5 @@ Acá vas a encontrar los camiones más destacados
 
 </ol>
 
-<button class="btn btn-warning"><a href="{% url 'Nuevo Camion' %}">Agregar Nuevo Camion</a></button>
+<button class="btn btn-warning"><a href="{% url 'Nuevo Auto' %}">Agregar Nuevo Auto</a></button>
 {% endblock %}
