@@ -1,0 +1,20 @@
+{%  extends "AppAutos/padre.html"%}
+
+{% block titulo %} 
+Acá vas a encontrar las camionetas más destacadas
+{% endblock %}
+ 
+{% block contenido1 %}
+
+<ol>
+
+{% for x in object_list %}
+
+<li>Marca: {{x.marca}}  <br> Modelo: {{x.modelo}}  Año: {{x.año}}</li>
+
+{% endfor %}
+
+</ol>
+
+<button class="btn btn-warning"><a href="{% url 'Nueva Camioneta' %}">Agregar Nueva Camioneta</a></button>
+{% endblock %}

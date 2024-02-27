@@ -1,0 +1,17 @@
+{%  extends "AppAutos/padre.html"%}
+
+{% block titulo %} 
+Acá podes eliminar camiones de la lista que no estés interesado
+{% endblock %}
+ 
+{% block contenido1 %}
+
+<form action="" method="POST">{% csrf_token %}
+
+        <p>¿Estás seguro de borrar el camion: {{object}}</p>
+
+        <input type="submit" value="Eliminar">
+    
+</form>
+
+{% endblock %}

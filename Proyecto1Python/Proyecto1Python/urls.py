@@ -6,7 +6,24 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     
     path("", inicio),
+    
+    # Creamos un auto y luego nos direcciona a la lista de Autos creados
     path("listaAutos/", ListaAutos.as_view(), name="Lista de Autos"),
+    path("crearAutos/", CrearAutos.as_view(), name="Crear Autos"),
+    path("actualizarAutos/<int:pk>", ActualizarAutos.as_view(), name="Actualizar Autos"),
+    path("borrarAutos/<int:pk>", BorrarAutos.as_view(), name="Borrar Autos"),
+    
+    # Creamos una camioneta y luego nos direcciona a la lista de Camionetas creadas
+    path("listaCamionetas/", ListaCamionetas.as_view(), name="Lista de Camionetas"),
+    path("crearCamionetas/", CrearCamionetas.as_view(), name="Crear Camionetas"),
+    path("actualizarCamionetas/<int:pk>", ActualizarCamionetas.as_view(), name="Actualizar Camionetas"),
+    path("borrarCamionetas/<int:pk>", BorrarCamionetas.as_view(), name="Borrar Camionetas"),
+    
+    # Creamos un camion y luego nos direcciona a la lista de Camiones creados
+    path("listaCamiones/", ListaCamiones.as_view(), name="Lista de Camiones"),
+    path("crearCamiones/", CrearCamiones.as_view(), name="Crear Camiones"),
+    path("actualizarCamiones/<int:pk>", ActualizarCamiones.as_view(), name="Actualizar Camiones"),
+    path("borrarCamiones/<int:pk>", BorrarCamiones.as_view(), name="Borrar Camiones"),
     
     # URLs de los modelos creados
     path("autos/", ver_autos, name="Autos"),

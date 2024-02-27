@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from AppAutos.models import Autos, Camionetas, Camiones
 from AppAutos.forms import AutosFormulario, CamionetasFormulario, CamionesFormulario
 from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 def inicio(request):
     
@@ -350,4 +351,82 @@ class ListaAutos(ListView):
     
     model = Autos
     template_name = "AppAutos/Autos_List.html"
+    
+class CrearAutos(CreateView):
+    
+    model = Autos
+    template_name = "AppAutos/crearAutos.html"
+    fields = ["marca", "modelo", "año", "color"]
+    success_url = "/listaAutos"
+    
+class ActualizarAutos(UpdateView):
+    
+    model = Autos
+    template_name = "AppAutos/crearAutos.html"
+    fields = ["marca", "modelo", "año", "color"]
+    success_url = "/listaAutos"
+    
+class BorrarAutos(DeleteView):
+    
+    model = Autos
+    template_name = "AppAutos/borrarAuto.html"
+    success_url = "/listaAutos/"
+    
+    
+    
+    
+
+class ListaCamionetas(ListView):
+    
+    model = Camionetas
+    template_name = "AppAutos/Camionetas_List.html"
+    
+class CrearCamionetas(CreateView):
+    
+    model = Camionetas
+    template_name = "AppAutos/crearCamionetas.html"
+    fields = ["marca", "modelo", "año", "color"]
+    success_url = "/listaCamionetas"
+    
+class ActualizarCamionetas(UpdateView):
+    
+    model = Camionetas
+    template_name = "AppAutos/crearCamionetas.html"
+    fields = ["marca", "modelo", "año", "color"]
+    success_url = "/listaCamionetas"
+    
+class BorrarCamionetas(DeleteView):
+    
+    model = Camionetas
+    template_name = "AppAutos/borrarCamioneta.html"
+    success_url = "/listaCamionetas/"
+    
+    
+    
+    
+class ListaCamiones(ListView):
+    
+    model = Camiones
+    template_name = "AppAutos/Camiones_List.html"
+    
+class CrearCamiones(CreateView):
+    
+    model = Camiones
+    template_name = "AppAutos/crearCamiones.html"
+    fields = ["marca", "modelo", "año", "color"]
+    success_url = "/listaCamiones"
+    
+class ActualizarCamiones(UpdateView):
+    
+    model = Camiones
+    template_name = "AppAutos/crearCamiones.html"
+    fields = ["marca", "modelo", "año", "color"]
+    success_url = "/listaCamiones"
+    
+class BorrarCamiones(DeleteView):
+    
+    model = Camiones
+    template_name = "AppAutos/borrarCamion.html"
+    success_url = "/listaCamiones/"
+
 
