@@ -7,6 +7,9 @@ urlpatterns = [
     
     path("", inicio),
     
+    path("login/", inicio_sesion, name="Iniciar Sesión"),
+    path("signup/", registro, name="Registrarse"),
+    
     # Creamos un auto y luego nos direcciona a la lista de Autos creados
     path("listaAutos/", ListaAutos.as_view(), name="Lista de Autos"),
     path("crearAutos/", CrearAutos.as_view(), name="Crear Autos"),

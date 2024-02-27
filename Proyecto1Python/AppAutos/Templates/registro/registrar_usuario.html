@@ -1,0 +1,17 @@
+{%  extends "AppAutos/padre.html"%}
+
+{% block titulo %} 
+Acá podes registrarte en nuestro sitio web
+{% endblock %}
+ 
+{% block contenido1 %}
+
+<form action="" method="POST"> {% csrf_token %}
+
+    {{formu}}
+
+    <input type="submit" value="Registrarse">
+
+</form>
+
+{% endblock %}

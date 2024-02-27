@@ -1,13 +1,71 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from AppAutos.models import Autos, Camionetas, Camiones
-from AppAutos.forms import AutosFormulario, CamionetasFormulario, CamionesFormulario
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+
+from AppAutos.models import Autos, Camionetas, Camiones
+from AppAutos.forms import AutosFormulario, CamionetasFormulario, CamionesFormulario
 
 def inicio(request):
     
     return render(request, "AppAutos/inicio.html")
+
+#Vistas de register/login/logout
+
+def inicio_sesion(request):
+    
+    if request.method == "POST":
+        
+        formulario = AuthenticationForm(request, data = request.POST)
+        
+        if formulario.is_valid():
+            
+            info = formulario.cleaned_data
+            
+            usuario = info["username"]
+            contraseña = info["password"]
+            
+            usuario_actual = authenticate(username=usuario, password=contraseña)
+            
+            
+            if usuario_actual is not None:
+                login(request, usuario_actual)
+                
+                return render(request, "AppAutos/inicio.html", {"mensaje":f"Bienvenido {usuario}!"})
+            else: 
+                
+                return render(request, "AppAutos/inicio.html", {"mensaje":"Error, los datos ingresados son incorrectos"})
+            
+        else:
+            
+            return render(request, "AppAutos/inicio.html", {"mensaje":"Error, el formulario es incorrecto"})
+        
+    formulario = AuthenticationForm()
+    
+    
+    return render(request, "registro/inicio_sesion.html", {"formu": formulario})
+
+def registro(request):
+    
+    if request.method == "POST":
+        
+        formulario = UserCreationForm(request.POST)
+        
+        if formulario.is_valid():
+            
+            info = formulario.cleaned_data
+            
+            usuario = info["username"]
+            
+            formulario.save() # Se crea el usuario en la base de datos
+            
+            return render(request, "AppAutos/inicio.html", {"mensaje":f"Bienvenido {usuario} !"})
+    
+    formulario = UserCreationForm()
+    
+    return render(request, "registro/registrar_usuario.html", {"formu":formulario})
 
 
 
