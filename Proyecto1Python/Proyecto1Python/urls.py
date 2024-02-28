@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 from AppAutos.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -9,6 +11,7 @@ urlpatterns = [
     
     path("login/", inicio_sesion, name="Iniciar Sesión"),
     path("signup/", registro, name="Registrarse"),
+    path("logout/", cerrar_sesion, name="Cerrar Sesión"),
     
     # Creamos un auto y luego nos direcciona a la lista de Autos creados
     path("listaAutos/", ListaAutos.as_view(), name="Lista de Autos"),
@@ -53,3 +56,5 @@ urlpatterns = [
     path("eliminarCamion/<camiones_marca>", eliminar_camion, name="Eliminar Camion"),
     
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

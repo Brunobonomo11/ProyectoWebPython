@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 from AppAutos.models import Autos, Camionetas, Camiones
@@ -46,6 +46,13 @@ def inicio_sesion(request):
     
     
     return render(request, "registro/inicio_sesion.html", {"formu": formulario})
+
+
+def cerrar_sesion(request):
+    logout(request)
+    return render (request, "registro/cerrar_sesion.html")
+
+
 
 def registro(request):
     

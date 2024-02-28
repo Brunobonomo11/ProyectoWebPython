@@ -6,3 +6,4 @@ from AppAutos.models import *
 admin.site.register(Autos)
 admin.site.register(Camionetas)
 admin.site.register(Camiones)
+admin.site.register(AvatarImagen)
